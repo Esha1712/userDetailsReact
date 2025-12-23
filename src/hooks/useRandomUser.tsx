@@ -1,24 +1,30 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { fetchRandomUser } from '../api/randomUserAPI';
-import type { User } from '../types/user';
-import { getFromLocalStorage, saveToLocalStorage } from '../utils/localStroge';
+import { type User } from '../types/user';
+import {
+  getFromLocalStorage,
+  saveToLocalStorage,
+} from '../utils/localStorage';
 
-const STORAGE_KEY = "random-user";
+const STORAGE_KEY = 'random-user';
 
 export const useRandomUser = () => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const getUser = useCallback(async () => {
+  // Ref to prevent double fetching in React 18 StrictMode
+  const hasFetchedRef = useRef(false);
+
+  const fetchUser = useCallback(async () => {
+    if (loading) return;
+
     try {
       setLoading(true);
       setError(null);
-
       const data = await fetchRandomUser();
 
-      // ✅ Destructuring response
-      const {
+      const { // Destructure user data
         name: { first, last },
         email,
       } = data.results[0];
@@ -35,16 +41,26 @@ export const useRandomUser = () => {
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [loading]);
 
   useEffect(() => {
+    // Prevent duplicate execution in React 18 StrictMode
+    if (hasFetchedRef.current) return;
+    hasFetchedRef.current = true;
+
     const storedUser = getFromLocalStorage<User>(STORAGE_KEY);
+
     if (storedUser) {
       setUser(storedUser);
     } else {
-      getUser();
+      fetchUser();
     }
-  }, [getUser]);
+  }, [fetchUser]);
 
-  return { user, loading, error, refreshUser: getUser };
+  return {
+    user,
+    loading,
+    error,
+    refreshUser: fetchUser,
+  };
 };

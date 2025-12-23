@@ -6,14 +6,16 @@ function App() {
 
   return (
     <div className="app">
-      <h1>Random User</h1>
-
-      {loading && <p>Loading...</p>}
-      {error && <p>{error}</p>}
-      {user && <UserCard user={user} />}
-
-      <button onClick={refreshUser}>Refresh User</button>
+      <div className={`container ${loading ? "is-loading" : ""}`}>
+        <h1>Random User</h1>
+        {error && <p className="error">{error}</p>}
+        {user && <UserCard user={user} />}
+        <button onClick={refreshUser} disabled={loading}>
+          Refresh
+        </button>
+      </div>
     </div>
+
   );
 }
 
