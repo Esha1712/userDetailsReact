@@ -1,73 +1,59 @@
-# React + TypeScript + Vite
+### User Details React Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple, production-ready React application that fetches and displays a random user’s full name and email address using the public randomuser.me
+ API.
 
-Currently, two official plugins are available:
+This project was built as an assessment to demonstrate clean React architecture, modern hooks usage, TypeScript safety, and thoughtful UI/UX decisions.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Live Demo
+https://user-details-react-mu.vercel.app/
 
-## React Compiler
+### GitHub Repository
+https://github.com/Esha1712/userDetailsReact/
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Features
 
-## Expanding the ESLint configuration
+Fetches random user data asynchronously using Axios
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Displays the user’s full name and email address
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Stores fetched user data in localStorage
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Uses functional components and custom hooks
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Refresh button fetches a new user without page reload
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Button is disabled during API calls to prevent duplicate requests
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Handles errors gracefully with an Error Boundary
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Prevents duplicate API calls caused by React 18 StrictMode
+
+Clean, minimal, and professional UI
+
+Fully written in TypeScript (.tsx)
+
+ESLint and Prettier configured for code quality
+
+Deployed using Vercel
+
+### Tech Stack
+
+React
+
+TypeScript
+
+Vite
+
+Axios
+
+ESLint
+
+Prettier
+
+Vercel
+
+### Getting Started (Local Setup)
+npm install
+npm run dev
+Build for production - npm run build
