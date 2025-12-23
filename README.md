@@ -16,45 +16,45 @@ This project was built as an assessment to demonstrate clean React architecture,
 
 ### Features
 
-Fetches random user data asynchronously using Axios
+1. Fetches random user data asynchronously using Axios
 
-Displays the user’s full name and email address
+2. Displays the user’s full name and email address
 
-Stores fetched user data in localStorage
+3. Stores fetched user data in localStorage
 
-Uses functional components and custom hooks
+4. Uses functional components and custom hooks
 
-Refresh button fetches a new user without page reload
+5. Refresh button fetches a new user without page reload
 
-Button is disabled during API calls to prevent duplicate requests
+6. Button is disabled during API calls to prevent duplicate requests
 
-Handles errors gracefully using an Error Boundary
+7. Handles errors gracefully using an Error Boundary
 
-Prevents duplicate API calls caused by React 18 StrictMode
+8. Prevents duplicate API calls caused by React 18 StrictMode
 
-Clean, minimal, and professional UI
+9. Clean, minimal, and professional UI
 
-Fully written in TypeScript (.tsx)
+10. Fully written in TypeScript (.tsx)
 
-ESLint and Prettier configured for code quality
+11. ESLint and Prettier configured for code quality
 
-Deployed using Vercel
+12. Deployed using Vercel
 
 ### Tech Stack
 
-React
+1. React
 
-TypeScript
+2. TypeScript
 
-Vite
+3. Vite
 
-Axios
+4. Axios
 
-ESLint
+5. ESLint
 
-Prettier
+6. Prettier
 
-Vercel
+7. Vercel
 
 ### Getting Started (Local Setup)
 Install dependencies
@@ -65,14 +65,3 @@ npm run dev
 
 Build for production
 npm run build
-
-### Project Structure
-src/
-├── api/              # API calls
-├── components/       # UI components
-├── hooks/            # Custom hooks
-├── types/            # TypeScript interfaces
-├── utils/            # Utility helpers
-├── App.tsx
-├── main.tsx
-└── index.css
